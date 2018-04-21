@@ -18,25 +18,22 @@ jobs:
 
     steps:      
       - run: 
-        name: permisos
-        command: sudo chown -R circleci:circleci /var/www/html
+         name: permisos
+         command: sudo chown -R circleci:circleci /var/www/html
         
       - checkout
       
       - run:
-        name: instalar curl
-        command: sudo apt-get install curl
+         name: instalar curl
+         command: sudo apt-get install curl
         
       - run: 
-        name: descargar getcomposer
-        command: sudo php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+         name: descargar getcomposer
+         command: sudo php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
        
       - run:
-        name: Instalar composer
-        command: sudo php composer-setup.php
+         name: Instalar composer
+         command: sudo php composer-setup.php
         
-      - run:
-        name: Install dependencias
-         
-      # run tests!
+          # run tests!
       - run: phpunit
