@@ -27,5 +27,13 @@ final class UsuariosTest extends TestCase{
             $usuarios->esEmailValido('joe@email.com')
         );
     }
+    
+	public function esClaveValida(){
+		$usuarios = new Usuarios();
+        $this->assertEquals(
+            true,
+            $usuarios->esClaveValida('sfsdf23423')
+        );
+    }
 }
 ?>
