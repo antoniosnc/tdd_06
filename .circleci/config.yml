@@ -34,6 +34,3 @@ jobs:
       - run:
          name: Instalar composer
          command: sudo php composer-setup.php
-        
-          # run tests!
-      - run: phpunit
