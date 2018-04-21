@@ -7,31 +7,36 @@ jobs:
   build:
     docker:
       # specify the version you desire here
-      - image: circleci/php:7.1.5-browsers
+      - image: circleci/php:5.6.30-apache
       
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
       # documented at https://circleci.com/docs/2.0/circleci-images/
       # - image: circleci/mysql:9.4
 
-    working_directory: ~/repo
+    working_directory: /var/www/html
 
-    steps:
-      - checkout
-
-      # Download and cache dependencies
-      - restore_cache:
-          keys:
-          - v1-dependencies-{{ checksum "composer.json" }}
-          # fallback to using the latest cache if no exact match is found
-          - v1-dependencies-
-
-      - run: composer install -n --prefer-dist
-
-      - save_cache:
-          paths:
-            - ./vendor
-          key: v1-dependencies-{{ checksum "composer.json" }}
+    steps:      
+      - run: 
+        name: permisos
+        command: sudo chown -R circleci:circleci /var/www/html
         
+      - checkout
+      
+      -run:
+        name: instalar curl
+        command: sudo apt-get install curl
+        
+      -run: 
+        name: descargar getcomposer
+        command: sudo php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+       
+      -run:
+        name: Instalar composer
+        command: sudo php composer-setup.php
+        
+       -run:
+        name: Install dependencias
+         
       # run tests!
-      - run: phpunit
+       - run: phpunit
