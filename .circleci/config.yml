@@ -23,19 +23,19 @@ jobs:
         
       - checkout
       
-      -run:
+      - run:
         name: instalar curl
         command: sudo apt-get install curl
         
-      -run: 
+      - run: 
         name: descargar getcomposer
         command: sudo php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
        
-      -run:
+      - run:
         name: Instalar composer
         command: sudo php composer-setup.php
         
-       -run:
+      - run:
         name: Install dependencias
          
       # run tests!
