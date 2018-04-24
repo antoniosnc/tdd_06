@@ -34,3 +34,7 @@ jobs:
       - run:
          name: Instalar composer
          command: sudo php composer-setup.php
+         
+      - run:
+         name: Instalar dependencias
+         command: /var/html/composer.phar install --no-interaction
