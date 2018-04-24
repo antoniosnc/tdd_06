@@ -38,3 +38,9 @@ jobs:
       - run:
          name: Instalar dependencias
          command: /var/html/composer.phar install --no-interaction
+      
+      - run:
+         name: ls
+         command: |
+         ls
+         v1/vendor/bin/phpunit -- bootstrap Model/Usuarios.php --testdox Tests
