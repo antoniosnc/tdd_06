@@ -43,5 +43,18 @@ jobs:
          name: ls
          command: |
           ls
-          v1/vendor/bin/phpunit -- bootstrap Model/Usuarios.php --testdox Tests
-          
+          v1/vendor/bin/phpunit --bootstrap Model/Usuarios.php --testdox Tests
+         
+      - run:
+         shell: /bin/bash
+         command: |
+          mkdir -p phpunit
+          v1/vendor/bin/phpunit --log-junit phpunit/junit.xml --bootstrap Model/Usuarios.php 
+         when: always
+        
+      - store_test_results:
+         path: phpunit
+         
+      - store_artifacs:
+         path: phpunit
+         
