@@ -55,6 +55,6 @@ jobs:
       - store_test_results:
          path: phpunit
          
-      - store_artifacs:
+      - store_artifacts:
          path: phpunit
          
